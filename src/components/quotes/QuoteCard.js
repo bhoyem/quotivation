@@ -1,8 +1,12 @@
 function QuoteCard({ quote }) {
+    console.log(quote)
     return (
-        // console.log(quote)
         < article className = "quote-card" >
             <div>
+                <p className="categories">
+                    {quote.categories.map((category, index) => <span className="category" key={index}>{category}</span>)
+                    }
+                </p>
                 <h3>{quote.text}</h3>
                 <footer>
                     <p className="author">

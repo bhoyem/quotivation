@@ -1,7 +1,7 @@
 import React from "react";
 import { Filter } from "react-feather";
 
-function CategoryForm({ categories, category }) {
+function CategoryForm({ categories, category, handleCategoryChange }) {
     // console.log(categories);
 
     return (
@@ -9,12 +9,13 @@ function CategoryForm({ categories, category }) {
             <form className='category-filter'>
                 <Filter />
                 <label htmlFor='category'>Filter Quotes:</label>
-                <select id='category' name='category' value={category}>
+                <select id='category' name='category' value={category} onChange={handleCategoryChange}>
                     {categories.map((category) => (
                         <option key={category} value={category}>
                             {category}
                         </option>
                     ))}
+                    
                 </select>
             </form>
         </div>
