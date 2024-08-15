@@ -1,7 +1,10 @@
 import { Heart } from "react-feather";
 
-function QuoteCard({ quote, addToFavorites}) {
-    // console.log(quote)
+function QuoteCard({ quote, addToFavorites, favoriteQuotes }) {
+    const alreadyFavorite = favoriteQuotes.find((checkedQuote) => checkedQuote.id == quote.id);
+    const faveStyle = (alreadyFavorite ? "#333" : "");
+    // const selectedQuote = quotes.find((quote) => quote.id == quoteId);
+
     return (
         < article className="quote-card" >
             <div>
@@ -15,7 +18,7 @@ function QuoteCard({ quote, addToFavorites}) {
                         {quote.author}
                     </p>
                     <p className="add-favorite" >
-                        <Heart onClick={() => addToFavorites(quote.id)}/>
+                        <Heart onClick={() => addToFavorites(quote.id)} style={{ fill: faveStyle }} />
                     </p>
                 </footer>
             </div>

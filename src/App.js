@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Loader } from "react-feather";
 import Quotes from "./components/quotes/Quotes.js";
+import FavoriteQuotes from "./components/quotes/FavoriteQuotes.js";
 import "./App.css";
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
     const selectedQuote = quotes.find((quote) => quote.id == quoteId);
     const alreadyFavorite = favoriteQuotes.find((quote) => quote.id == selectedQuote.id);
 
-    console.log(selectedQuote);
+    // console.log(selectedQuote);
     if (alreadyFavorite) {
       console.log("This quote is already in your favorites! Choose another");
     } else if (favoriteQuotes.length < maxFaves) {
@@ -52,24 +53,22 @@ function App() {
     return;
   }
 
+  const removeFromFavorites = (quoteId) => {
+    // console.log(quoteId)
+    // const selectedQuote = favoriteQuotes.find((quote) => quote.id == quoteId);
+    // console.log(selectedQuote);
+    const newFavoriteQuotesList = favoriteQuotes.filter((quote) => quote.id !== quoteId)
+    setFavoriteQuotes(newFavoriteQuotesList);
+    return;
+  };
+
   return (
 
     <div className='App'>
       <Header />
       <main>
-        <section className="favorite-quotes">
-          <div className="wrapper quotes">
-            <h3>Top 3 favorite quotes</h3>
-            {favoriteQuotes.length > 0 && JSON.stringify(favoriteQuotes)}
-            <div className="favorite-quotes-description">
-              <p>
-                You can add up to three favorites by selecting from the options below. <br />
-                Once you choose, they will appear here.
-              </p>
-            </div>
-          </div>
-        </section>
-        {loading ? (<Loader />) : (<Quotes quotes={filteredQuotes} categories={categories} category={category} handleCategoryChange={handleCategoryChange} addToFavorites={addToFavorites} />)}
+        <FavoriteQuotes favoriteQuotes={favoriteQuotes} maxFaves={maxFaves} removeFromFavorites={removeFromFavorites} />
+        {loading ? (<Loader />) : (<Quotes quotes={filteredQuotes} categories={categories} category={category} handleCategoryChange={handleCategoryChange} addToFavorites={addToFavorites} favoriteQuotes = {favoriteQuotes}/>)}
       </main>
       <Footer />
     </div>
