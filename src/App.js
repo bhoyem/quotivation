@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Component } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { Loader } from "react-feather";
@@ -11,7 +11,7 @@ function App() {
   const [quotes, setQuotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [category, setCategory] = useState("All");
-  const [favoriteQuotes, setFavoriteQuotes] = useState([]);
+  const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
   const [messageText, setMessageText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
 
@@ -33,6 +33,11 @@ function App() {
   };
 
   useEffect(() => { fetchQuotes(); }, []);
+
+  //Every time the favoriteQuotes state changes, store the new state to local storage
+  useEffect(() => {
+    window.localStorage.setItem("favoriteQuotes", JSON.stringify(favoriteQuotes));
+  }, [favoriteQuotes]);
 
   const filteredQuotes = (category !== "All" ? quotes.filter((quote) => quote.categories.includes(category)) : quotes);
 
