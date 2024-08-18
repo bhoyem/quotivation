@@ -46,8 +46,8 @@ function App() {
   };
 
   const addToFavorites = (quoteId) => {
-    const selectedQuote = quotes.find((quote) => quote.id == quoteId);
-    const alreadyFavorite = favoriteQuotes.find((quote) => quote.id == selectedQuote.id);
+    const selectedQuote = quotes.find((quote) => quote.id === quoteId);
+    const alreadyFavorite = favoriteQuotes.find((quote) => quote.id === selectedQuote.id);
 
     if (alreadyFavorite) {
       removeFromFavorites(quoteId);

@@ -8,7 +8,7 @@ function Quotes({ quotes, categories, category, handleCategoryChange, addToFavor
             <div className="quotes wrapper">
                 <div className="category-header">
                     <h2>Pick your Favorite Quotes Below</h2>
-                    <p> You have {quotes.length > 1 && `a collection of `} {quotes.length} great {category !== "All" && category} {quotes.length == 1 ? `quote!` : `quotes!`}
+                    <p> You have {quotes.length > 1 && `a collection of `} {quotes.length} great {category !== "All" && category} {quotes.length === 1 ? `quote!` : `quotes!`}
                     </p>
                     <CategoryForm categories={categories} category={category} handleCategoryChange={handleCategoryChange} />
                 </div>
