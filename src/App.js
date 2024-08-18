@@ -49,7 +49,6 @@ function App() {
     const selectedQuote = quotes.find((quote) => quote.id == quoteId);
     const alreadyFavorite = favoriteQuotes.find((quote) => quote.id == selectedQuote.id);
 
-    // console.log(selectedQuote);
     if (alreadyFavorite) {
       removeFromFavorites(quoteId);
       setMessageText("Removed from favorites");
@@ -71,9 +70,6 @@ function App() {
 
 
   const removeFromFavorites = (quoteId) => {
-    // console.log(quoteId)
-    // const selectedQuote = favoriteQuotes.find((quote) => quote.id == quoteId);
-    // console.log(selectedQuote);
     const newFavoriteQuotesList = favoriteQuotes.filter((quote) => quote.id !== quoteId)
     setFavoriteQuotes(newFavoriteQuotesList);
     return;

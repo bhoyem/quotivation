@@ -2,7 +2,6 @@ import React from "react";
 import { Filter } from "react-feather";
 
 function CategoryForm({ categories, category, handleCategoryChange }) {
-    // console.log(categories);
 
     return (
         <div className='category-form'>
